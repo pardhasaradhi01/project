@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Data Manager - Login</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .background-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 90px;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.1);
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .login-container {
+      position: relative;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px 50px;
+      border-radius: 20px;
+      width: 350px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+
+    h1 {
+      color: #2e3192;
+      font-size: 28px;
+      margin-bottom: 5px;
+    }
+
+    p {
+      color: #555;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      font-weight: 500;
+      color: #2e3192;
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 14px;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+
+    input:focus {
+      border-color: #6a11cb;
+      background-color: #eef4ff;
+      box-shadow: 0 0 10px rgba(106, 17, 203, 0.3);
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(90deg, #2575fc, #6a11cb);
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #444;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="background-text">Student Data Manager</div>
+
+  <div class="login-container">
+    <h1>Welcome Back!</h1>
+    <p>Enter your details to continue</p>
+
+    <form id="loginForm">
+      <label for="roll">Roll Number</label>
+      <input type="text" id="roll" name="roll" placeholder="Enter your roll number" required />
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email address" required />
+
+      <button type="submit">Login</button>
+    </form>
+
+    <footer>© 2025 Student Data Manager | Designed by CSE-A</footer>
+  </div>
+
+ <script>
+  // List of valid credentials (roll number + email)
+  const validUsers = [
+    { roll: "24711A0560", email: "pardhu@gmail.com" },
+    { roll: "24711A0564", email: "pranav@gmail.com" },
+    { roll: "24711A0536", email: "umar@gmail.com" },
+    { roll: "24711A0509", email: "karthikeya@gmail.com" },
+    { roll: "24711A0525", email: "bhanu@gmail.com" }
+  ];
+
+  // Form submit handler
+  document.getElementById("loginForm").addEventListener("submit", function (event) {
+    event.preventDefault(); // Stop normal form submission
+
+    const roll = document.getElementById("roll").value;
+    const email = document.getElementById("email").value;
+
+    // Check if entered credentials match any valid user
+    const userValid = validUsers.some(user => user.roll === roll && user.email === email);
+
+    if (userValid) {
+      // Go to next page
+      window.location.href = "result.html";
+    } else {
+      // Go to error page
+      window.location.href = "invalid.html";
+    }
+  });
+</script>
+</body>
+</html>
